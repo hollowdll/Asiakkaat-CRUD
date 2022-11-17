@@ -1,0 +1,30 @@
+table {
+	margin-left: auto;
+	margin-right: auto;
+}
+
+table, th, td {
+	border: 1px solid black;
+	border-collapse: collapse;
+	padding: 10px;
+}
+
+thead {
+	background-color: rgb(100,180,100);
+}
+
+tbody {
+	background-color: rgb(240,240,240);
+}
+
+tbody tr:nth-child(even) {
+	background-color: rgb(200,200,200);
+}
+
+#hakusana-text {
+	text-align: right;
+}
+
+#hakunappi {
+	float: left;
+}
