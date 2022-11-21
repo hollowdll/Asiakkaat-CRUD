@@ -23,6 +23,5 @@
 hs_err_pid*
 
 # dev environment
-.settings/
 *.classpath
 *.project
