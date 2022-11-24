@@ -1,6 +1,7 @@
 table {
 	margin-left: auto;
 	margin-right: auto;
+	font-family: Arial, Helvetica, sans-serif;
 }
 
 table, th, td {
@@ -18,7 +19,26 @@ tbody {
 }
 
 tbody tr:nth-child(even) {
-	background-color: rgb(200,200,200);
+	background-color: rgb(210,210,210);
+}
+
+.oikealle {
+	text-align: right;
+}
+
+.poista {
+	text-decoration: underline;
+	cursor: pointer;
+	color: red;
+}
+
+#linkki {
+	color: black;
+	text-decoration: none;
+}
+
+#linkki:hover {
+	color: white;
 }
 
 #hakusana-text {
@@ -27,4 +47,8 @@ tbody tr:nth-child(even) {
 
 #hakunappi {
 	float: left;
+}
+
+#ilmo {
+	text-align: center;
 }
