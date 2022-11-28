@@ -93,7 +93,7 @@ function lisaaTiedot(){
 	let url = "asiakkaat";    
     let requestOptions = {
         method: "POST", 	//Lisätään asiakas
-        headers: { "Content-Type": "application/json" },  
+        headers: { "Content-Type": "application/json; charset=UTF-8" },
     	body: formData
     };
       
