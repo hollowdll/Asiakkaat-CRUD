@@ -5,10 +5,11 @@
 <head>
 <meta charset="UTF-8">
 <script defer src="scripts/main.js"></script>
+<script defer src="scripts/io.js"></script>
 <link rel="stylesheet" href="css/styles.css">
 <title>Lisää asiakas</title>
 </head>
-<body>
+<body onload="asetaFocus('etunimi')" onkeydown="tutkiKey(event, 'lisaa')">
 
 <form name="lomake">
 	<table>

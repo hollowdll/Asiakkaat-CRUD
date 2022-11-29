@@ -27,6 +27,7 @@ public class AsiakkaatServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		System.out.println("AsiakkaatServlet.doGet()");
 		String hakusana = request.getParameter("hakusana");
+		String id = request.getParameter("id");
 		Dao dao = new Dao();
 		String strJSON="";
 		
@@ -39,6 +40,9 @@ public class AsiakkaatServlet extends HttpServlet {
 				asiakkaat = dao.getAllItems();	//Haetaan kaikki
 			}
 			strJSON = new Gson().toJson(asiakkaat);	
+		} else if (id != null) {
+			Asiakas asiakas = dao.getItem(Integer.parseInt(id));
+			strJSON = new Gson().toJson(asiakas);
 		}
 		
 		response.setContentType("application/json; charset=UTF-8");
@@ -48,7 +52,7 @@ public class AsiakkaatServlet extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		System.out.println("AsiakkaatServlet.doPost()");
-		//Luetaan JSON-tiedot POST-pyynn�n bodysta ja luodaan niiden perusteella uusi asiakas
+		//Luetaan JSON-tiedot POST-pyynnön bodysta ja luodaan niiden perusteella uusi asiakas
 		String strJSONInput = request.getReader().lines().collect(Collectors.joining());
 		//System.out.println(strJSONInput);
 		Asiakas asiakas = new Gson().fromJson(strJSONInput, Asiakas.class);	
@@ -57,14 +61,26 @@ public class AsiakkaatServlet extends HttpServlet {
 		response.setContentType("application/json; charset=UTF-8");
 		PrintWriter out = response.getWriter();
 		if (dao.addItem(asiakas)) {
-			out.println("{\"response\":1}");  // lis��minen onnistui {"response":1}
+			out.println("{\"response\":1}");  // lisääminen onnistui {"response":1}
 		} else {
-			out.println("{\"response\":0}");  // lis��minen ep�onnistui {"response":0}
+			out.println("{\"response\":0}");  // lisääminen epäonnistui {"response":0}
 		}
 	}
 
 	protected void doPut(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		System.out.println("AsiakkaatServlet.doPut()");
+		//Luetaan JSON-tiedot PUT-pyynnän bodysta ja luodaan niiden perusteella uusi auto
+		String strJSONInput = request.getReader().lines().collect(Collectors.joining());
+		//System.out.println("strJSONInput " + strJSONInput);		
+		Asiakas asiakas = new Gson().fromJson(strJSONInput, Asiakas.class);
+		response.setContentType("application/json; charset=UTF-8");
+		PrintWriter out = response.getWriter();
+		Dao dao = new Dao();			
+		if(dao.changeItem(asiakas)){ //metodi palauttaa true/false
+			out.println("{\"response\":1}");  //Auton muuttaminen onnistui {"response":1}
+		}else{
+			out.println("{\"response\":0}");  //Auton muuttaminen epäonnistui {"response":0}
+		}
 	}
 
 	protected void doDelete(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -76,7 +92,7 @@ public class AsiakkaatServlet extends HttpServlet {
 		if (dao.removeItem(id)) {
 			out.println("{\"response\":1}");  // poistaminen onnistui {"response":1}
 		} else {
-			out.println("{\"response\":0}");  // poistaminen ep�onnistui {"response":0}
+			out.println("{\"response\":0}");  // poistaminen epäonnistui {"response":0}
 		}
 	}
 

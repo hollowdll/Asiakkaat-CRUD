@@ -7,7 +7,7 @@
 <link rel="stylesheet" href="css/styles.css">
 <title>Asiakkaat</title>
 </head>
-<body>
+<body onload="asetaFocus('hakusana')">
 
 <table id="listaus">
 	<thead>
@@ -16,7 +16,7 @@
 		</tr>
 		<tr>
 			<th colspan="3" id="hakusana-text">Hakusana:</th>
-			<th colspan="1"><input type="text" id="hakusana"></th>
+			<th colspan="1"><input type="text" id="hakusana" onkeydown="tutkiKey(event, 'listaa')"></th>
 			<th colspan="2"><input type="button" value="Hae" id="hakunappi" onclick="haeAsiakkaat()"></th>
 		</tr>		
 		<tr>
@@ -33,6 +33,7 @@
 </table>
 
 <script src="scripts/main.js"></script>
+<script src="scripts/io.js"></script>
 <script>haeAsiakkaat();</script>
 
 </body>
