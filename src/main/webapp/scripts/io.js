@@ -23,8 +23,8 @@ function printItems(respObjList){
     	htmlStr+="<td>"+item.sukunimi+"</td>";
     	htmlStr+="<td>"+item.puhelin+"</td>";
     	htmlStr+="<td>"+item.sposti+"</td>";
-    	htmlStr+="<td><a href='muutaasiakas.jsp?id="+item.id+"'>Muuta</a>&nbsp;";  
-		htmlStr+="<span class='poista' onclick=varmistaPoisto("+item.id+",'"+encodeURI(item.etunimi + " " + item.sukunimi)+"')>Poista</span></td>"; //encodeURI() muutetaan erikoismerkit, välilyönnit jne. UTF-8 merkeiksi.
+    	htmlStr+="<td><a class='muuta' href='muutaasiakas.jsp?id="+item.id+"'>Muuta</a></td>";
+		htmlStr+="<td><span class='poista' onclick=varmistaPoisto("+item.id+",'"+encodeURI(item.etunimi + " " + item.sukunimi)+"')>Poista</span></td>"; //encodeURI() muutetaan erikoismerkit, välilyönnit jne. UTF-8 merkeiksi.
     	htmlStr+="</tr>";    	
 	}	
 	document.getElementById("tbody").innerHTML = htmlStr;	

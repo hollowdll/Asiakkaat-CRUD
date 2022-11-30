@@ -27,9 +27,16 @@ tbody tr:nth-child(even) {
 }
 
 .poista {
-	text-decoration: underline;
 	cursor: pointer;
 	color: red;
+}
+
+.muuta {
+	text-decoration: none;
+}
+
+.poista:hover, .muuta:hover {
+	text-decoration: underline;
 }
 
 #linkki {

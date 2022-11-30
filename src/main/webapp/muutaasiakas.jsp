@@ -12,7 +12,7 @@
 		<table>
 			<thead>
 				<tr>
-					<th colspan="5" class="oikealle"><a id="linkki" href="listaaautot.jsp">Takaisin listaukseen</a></th>
+					<th colspan="5" class="oikealle"><a id="linkki" href="listaaasiakkaat.jsp">Takaisin listaukseen</a></th>
 				</tr>
 				<tr>
 					<th>Etunimi</th>
@@ -34,7 +34,7 @@
 		</table>
 		<input type="hidden" name="id" id="id">
 	</form>
-	<span id="ilmo"></span>
+	<p id="ilmo"></p>
 	
 	<script src="scripts/main.js"></script>
 	<script src="scripts/io.js"></script>

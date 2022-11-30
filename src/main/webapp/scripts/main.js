@@ -73,9 +73,8 @@ function siivoa(teksti){
 }
 
 function varmistaPoisto(id, nimi){
-	nimi = decodeURI(nimi);
-	if(confirm("Poista asiakas " + nimi +"?")){ //decodeURI() muutetaan enkoodatut merkit takaisin normaaliksi kirjoitukseksi
-		poistaAsiakas(id, encodeURI(nimi));
+	if(confirm("Poista asiakas " + decodeURI(nimi) +"?")){ //decodeURI() muutetaan enkoodatut merkit takaisin normaaliksi kirjoitukseksi
+		poistaAsiakas(id, nimi);
 	}
 }
 
