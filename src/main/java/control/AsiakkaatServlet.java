@@ -30,10 +30,9 @@ public class AsiakkaatServlet extends HttpServlet {
 		String id = request.getParameter("id");
 		Dao dao = new Dao();
 		String strJSON="";
+		ArrayList<Asiakas> asiakkaat;
 		
 		if (hakusana != null) {		//Jos kutsun mukana tuli hakusana
-			ArrayList<Asiakas> asiakkaat;
-			
 			if (!hakusana.equals("")) {
 				asiakkaat = dao.getAllItems(hakusana);	//Haetaan kaikki hakusanan mukaiset							
 			} else {
@@ -43,6 +42,9 @@ public class AsiakkaatServlet extends HttpServlet {
 		} else if (id != null) {
 			Asiakas asiakas = dao.getItem(Integer.parseInt(id));
 			strJSON = new Gson().toJson(asiakas);
+		} else {
+			asiakkaat = dao.getAllItems();
+			strJSON = new Gson().toJson(asiakkaat);	
 		}
 		
 		response.setContentType("application/json; charset=UTF-8");
