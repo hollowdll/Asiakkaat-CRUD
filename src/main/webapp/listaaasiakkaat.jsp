@@ -1,3 +1,4 @@
+<%@include file="header.jsp" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -12,7 +13,8 @@
 <table id="listaus">
 	<thead>
 		<tr>
-			<th colspan="7" class="oikealle"><a id="linkki" href="lisaaasiakas.jsp">Lisää uusi asiakas</a></th>
+			<th colspan="3"><a id="linkki" href="login?logout=1">Kirjaudu ulos (<%out.print(session.getAttribute("kayttaja"));%>)</a></th>
+			<th colspan="4" class="oikealle"><a id="linkki" href="lisaaasiakas.jsp">Lisää uusi asiakas</a></th>
 		</tr>
 		<tr>
 			<th colspan="3" id="hakusana-text">Hakusana:</th>

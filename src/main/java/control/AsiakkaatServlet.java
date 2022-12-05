@@ -10,6 +10,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.google.gson.Gson;
 
@@ -26,6 +27,10 @@ public class AsiakkaatServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		System.out.println("AsiakkaatServlet.doGet()");
+		HttpSession session = request.getSession(true);
+		if(session.getAttribute("kayttaja")==null){
+			return;
+		}
 		String hakusana = request.getParameter("hakusana");
 		String id = request.getParameter("id");
 		Dao dao = new Dao();
@@ -54,6 +59,10 @@ public class AsiakkaatServlet extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		System.out.println("AsiakkaatServlet.doPost()");
+		HttpSession session = request.getSession(true);
+		if(session.getAttribute("kayttaja")==null){
+			return;
+		}
 		//Luetaan JSON-tiedot POST-pyynnön bodysta ja luodaan niiden perusteella uusi asiakas
 		String strJSONInput = request.getReader().lines().collect(Collectors.joining());
 		//System.out.println(strJSONInput);
@@ -71,6 +80,10 @@ public class AsiakkaatServlet extends HttpServlet {
 
 	protected void doPut(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		System.out.println("AsiakkaatServlet.doPut()");
+		HttpSession session = request.getSession(true);
+		if(session.getAttribute("kayttaja")==null){
+			return;
+		}
 		//Luetaan JSON-tiedot PUT-pyynnän bodysta ja luodaan niiden perusteella uusi auto
 		String strJSONInput = request.getReader().lines().collect(Collectors.joining());
 		//System.out.println("strJSONInput " + strJSONInput);		
@@ -87,6 +100,10 @@ public class AsiakkaatServlet extends HttpServlet {
 
 	protected void doDelete(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		System.out.println("AsiakkaatServlet.doDelete()");
+		HttpSession session = request.getSession(true);
+		if(session.getAttribute("kayttaja")==null){
+			return;
+		}
 		int id = Integer.parseInt(request.getParameter("id"));
 		Dao dao = new Dao();
 		response.setContentType("application/json; charset=UTF-8");
